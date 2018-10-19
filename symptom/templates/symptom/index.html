@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Django Girls blog</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="">Django Girls Blog</a></h1>
+        </div>
+
+        {% for info in putting_info %}
+        <div>
+            <p>published: {{ putting_info.nickname }}</p>
+            <h1><a href="">{{ putting_info.email }}</a></h1>
+        </div>
+        {% endfor %}
+
+    </body>
+</html>

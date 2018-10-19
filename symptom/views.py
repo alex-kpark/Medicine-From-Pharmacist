@@ -36,3 +36,6 @@ def ask_question(request):
         return HttpResponse(str(question_cont))
     else:
         return HttpResponse('failure')
+
+
+
