@@ -44,7 +44,6 @@ def testing(request):
     if request.method == 'GET':
         try:
             targetuser = Patient.objects.get(nickname='sample')
-            print(targetuser)
             return render(request, 'symptom/index.html', {'tar':targetuser}) #디렉토리명/.html 파일 형태로 render, {}안에 넘길 정보를 쿼리셋으로 정의해서 template으로 넘겨주고, template에서 필요한 정보 표시해주면 됨
         except Exception as e:
             print(str(e))
@@ -57,7 +56,9 @@ def ajaxtest(request):
         try:
             received_ajax = request.POST.get('data', None)
             print(received_ajax)
-            return HttpResponse('success')
+            ques = Questions.objects.get(q_index=1)
+            return render(request, 'symptom/question.html', {'questions':ques}) #고쳐야 함
+            
         except Exception as e:
             print(str(e))
             return HttpResponse('Failure')
