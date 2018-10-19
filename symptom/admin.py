@@ -11,7 +11,7 @@ class PatientAdmin(admin.ModelAdmin):
     search_fields = ('nickname', 'email', 'age')
 
 class QuestionsAdmin(admin.ModelAdmin):
-    list_filter = ('question_a',)
+    list_filter = ('q_index',)
 
 # Register Modewl
 admin.site.register(Patient, PatientAdmin)

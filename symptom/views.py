@@ -13,6 +13,7 @@ import json
 import ast
 
 #request 정의해주고, function 안에서 1번은 사용해주어야 함
+#try - exception 구문으로 해야 잘 먹음
 
 #csrf 정의해주어서 보안 관련 이슈 해결
 @csrf_exempt 
@@ -38,4 +39,28 @@ def ask_question(request):
         return HttpResponse('failure')
 
 
+@csrf_exempt
+def testing(request):
+    if request.method == 'GET':
+        try:
+            targetuser = Patient.objects.get(nickname='sample')
+            print(targetuser)
+            return render(request, 'symptom/index.html', {'tar':targetuser}) #디렉토리명/.html 파일 형태로 render, {}안에 넘길 정보를 쿼리셋으로 정의해서 template으로 넘겨주고, template에서 필요한 정보 표시해주면 됨
+        except Exception as e:
+            print(str(e))
+            return HttpResponse('Failure')
+    else: 
+        return HttpResponse('Wrong Request')
 
+def ajaxtest(request):
+    if request.method == 'POST':
+        try:
+            received_ajax = request.POST.get('data', None)
+            print(received_ajax)
+            return HttpResponse('success')
+        except Exception as e:
+            print(str(e))
+            return HttpResponse('Failure')
+    else: 
+        return HttpResponse('Wrong Request')
+            

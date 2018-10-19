@@ -23,4 +23,9 @@ urlpatterns = [
     url(r'^login/$', login),
 
     url(r'^ask_question/$', ask_question),
+
+    url(r'^testing/$', testing),
+
+    url(r'^ajaxtest/$', ajaxtest),
+
 ]
