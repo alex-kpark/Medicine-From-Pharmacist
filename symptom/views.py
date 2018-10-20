@@ -16,6 +16,7 @@ import ast
 #try - exception 구문으로 해야 잘 먹음
 
 #csrf 정의해주어서 보안 관련 이슈 해결
+'''
 @csrf_exempt 
 def login(request):
     if request.method == 'GET':
@@ -28,6 +29,7 @@ def login(request):
             return HttpResponse('failure')
     else:
         return HttpResponse('Wrong Request')
+'''
 
 @csrf_exempt
 def ask_question(request):
@@ -37,7 +39,6 @@ def ask_question(request):
         return HttpResponse(str(question_cont))
     else:
         return HttpResponse('failure')
-
 
 @csrf_exempt
 def testing(request):
@@ -51,6 +52,7 @@ def testing(request):
     else: 
         return HttpResponse('Wrong Request')
 
+@csrf_exempt
 def ajaxtest(request):
     if request.method == 'POST':
         try:
@@ -64,4 +66,24 @@ def ajaxtest(request):
             return HttpResponse('Failure')
     else: 
         return HttpResponse('Wrong Request')
+
+@csrf_exempt      
+def login(request):
+    if request.method == 'GET':
+        try:
+            received_id = request.GET.get('id', None)
+            received_pw = request.GET.get('pw', None)
+            result = Patient.objects.get(nickname=received_id, password=received_pw)
+            return HttpResponse('Success')
             
+        except Exception as e:
+            print(str(e))
+            return HttpResponse('Failure')
+    else:
+        return HttpResponse('wrong request')
+
+@csrf_exempt      
+def confrontation(request):
+    return render(request, 'symptom/confrontation.html', {})
+    
+ 

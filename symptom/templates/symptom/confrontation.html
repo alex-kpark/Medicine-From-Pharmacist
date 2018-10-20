@@ -1,0 +1,49 @@
+{% load static %
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            // 예를 눌렀을 때
+            $(".signin").click(function(){
+
+                var id = $('.id').val();
+                var pw = $('.pw').val();
+
+                $.ajax({ // .like 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
+                type: "GET", // 데이터를 전송하는 방법을 지정
+                url: "http://127.0.0.1:8000/login/", // 통신할 url을 지정
+                data: {'id': id, 'pw': pw, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+    
+    <h1>로그인 입력화면 입니다</h1>
+    
+    <div>아이디를 입력해주세요:
+        <input type="textarea" class="id">
+    </div>
+
+    <div>패스워드를 입력해주세요:
+        <input type="textarea" class="pw">
+    </div>
+
+    <div><input type="button" class="signin" name="signin" value="signin"></div>
+
+    <h2>처음이신가요?</h2>
+    <input type="button" class="signup" name="signup" value="signup">
+
+</body>
+</html>

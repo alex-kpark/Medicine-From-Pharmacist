@@ -20,6 +20,8 @@ from symptom.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
+    url(r'^confrontation/$', confrontation),
+
     url(r'^login/$', login),
 
     url(r'^ask_question/$', ask_question),
