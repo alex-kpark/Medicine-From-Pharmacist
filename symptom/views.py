@@ -15,7 +15,6 @@ import ast
 #request 정의해주고, function 안에서 1번은 사용해주어야 함
 #try - exception 구문으로 해야 잘 먹음
 
-#csrf 정의해주어서 보안 관련 이슈 해결
 '''
 @csrf_exempt 
 def login(request):
