@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 예를 눌렀을 때
+            $('.answer_submit').click(function(){
+                
+                var ans_a = 0;
+                var ans_b = 0;
+                var ans_c = 0;
+                var ans_d = 0;
+
+                if ($("input:checkbox[class='ques_a']").is(":checked") == true){
+                    ans_a = 1;
+                } else {
+                    ans_a = 0;
+                }
+
+                if ($("input:checkbox[class='ques_b']").is(":checked") == true){
+                    ans_b = 1;
+                } else {
+                    ans_b = 0;
+                }
+
+                if ($("input:checkbox[class='ques_c']").is(":checked") == true){
+                    ans_c = 1;
+                } else {
+                    ans_c = 0;
+                }
+
+                if ($("input:checkbox[class='ques_d']").is(":checked") == true){
+                    ans_d = 1;
+                } else {
+                    ans_d = 0;
+                }         
+
+                $.ajax({ // .like 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
+                type: "GET", // 데이터를 전송하는 방법을 지정
+                url: "http://127.0.0.1:8000/answer/", // 통신할 url을 지정
+                data: {'ans_a':ans_a, 'ans_b':ans_b, 'ans_c':ans_c, 'ans_d':ans_d, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <h1>질문 화면입니다</h1>
+{% block content %}
+
+    <h3>질문에 대한 응답을 받는 창</h3>
+
+    <div>
+        <input type="checkbox" class='ques_a'>
+        {{body.ques_a}}        
+    </div>
+
+    <div>
+        <input type="checkbox" class='ques_b'>
+        {{body.ques_b}}
+    </div>
+
+    <div>
+        <input type="checkbox" class='ques_c'>
+        {{body.ques_c}}
+    </div>
+
+    <div>
+        <input type="checkbox" class='ques_d'>
+        {{body.ques_d}}
+    </div>
+
+{% endblock %}
+
+<div>
+    <a href="http://127.0.0.1:8000/result/">
+    <input type="button" class='answer_submit' value='약 찾기'>
+    </a>
+</div>
+</body>
+</html>

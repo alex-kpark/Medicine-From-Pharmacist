@@ -20,14 +20,32 @@ from symptom.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^confrontation/$', confrontation),
+    url(r'^splash/', splash),
 
-    url(r'^login/$', login),
+    url(r'^login_show/', login_show),
 
-    url(r'^ask_question/$', ask_question),
+    url(r'^auth/', auth),
 
-    url(r'^testing/$', testing),
+    url(r'^show_signup/', show_signup),
 
-    url(r'^ajaxtest/$', ajaxtest),
+    url(r'^show_main/', show_main),
 
+    url(r'^register_new/', register_new),
+
+    url(r'^check_symptom/eye/', check_eye),
+    url(r'^check_symptom/head/', check_head),
+    url(r'^check_symptom/nose/', check_nose),
+    url(r'^check_symptom/mouth/', check_mouth),
+    url(r'^check_symptom/muscle/', check_muscle),
+    url(r'^check_symptom/skin/', check_skin),
+    url(r'^check_symptom/digest/', check_digest),
+    url(r'^check_symptom/ankle/', check_ankle),
+    url(r'^check_symptom/reproduct/', check_reproduct),
+    # URL 추가해야 함
+
+    url(r'^answer/', answer),
+    url(r'^result/', result),
+
+    #url(r'^show_symptom/', show_symptom),
+    
 ]

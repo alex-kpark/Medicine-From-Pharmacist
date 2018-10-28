@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 예를 눌렀을 때
+            $('.loginbtn').click(function(){
+
+                var id = $('.id').val();
+                var password = $('.password').val();
+
+                $.ajax({ // .like 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
+                type: "POST", // 데이터를 전송하는 방법을 지정
+                url: "http://127.0.0.1:8000/auth/", // 통신할 url을 지정
+                data: {'id': id, 'password': password, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.signup').click(function(){
+                $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:8000/signup/",
+                data: {'isTrue': True, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                dataType: "json",
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <h1>로그인 화면입니다</h1>
+
+    <div>
+        id : <input type="textarea" class="id">
+    </div>
+
+    <div>
+        pw : <input type="textarea" class="password">
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/show_main/">
+            <input type="button" value="로그인버튼입니다" class="loginbtn">
+        </a>
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/show_signup/">
+            <input type="button" value="회원가입" class="signup">
+        </a>
+
+    </div>
+
+</body>
+</html>

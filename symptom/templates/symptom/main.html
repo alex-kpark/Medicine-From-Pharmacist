@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+
+    <!--
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var one = 1 
+            var two = 2
+
+            $('.one').click(function(){
+
+                $.ajax({ // .like 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
+                type: "POST", // 데이터를 전송하는 방법을 지정
+                url: "http://127.0.0.1:8000/check_symptom/", // 통신할 url을 지정
+                data: {'symptom': one, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.two').click(function(){
+
+                $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/check_symptom/",
+                data: {'symptom':'two', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.three').click(function(){
+
+                $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/check_symptom/",
+                data: {'symptom':'three', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.four').click(function(){
+
+                $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/check_symptom/",
+                data: {'symptom':'four', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.five').click(function(){
+
+                $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/check_symptom/",
+                data: {'symptom':'five', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.six').click(function(){
+
+                $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/check_symptom/",
+                data: {'symptom':'six', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.seven').click(function(){
+
+                $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/check_symptom/",
+                data: {'symptom':'seven', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.eight').click(function(){
+
+                $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/check_symptom/",
+                data: {'symptom':'eight', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+
+            $('.nine').click(function(){
+
+                $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/check_symptom/",
+                data: {'symptom':'nine', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+        });
+    </script>
+    -->
+</head>
+<body>
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/eye/" class="eye">눈</a>
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/head/" class="head">머리</a>
+    </div>
+    
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/nose/" class="nose">코와 귀</a>
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/mouth/" class="mouth">입</a>
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/muscle/" class="muscle">근육</a>
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/skin/" class="skin">피부</a>
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/digest/" class="digest">소화</a>
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/ankle/" class="ankle">관절</a>
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/check_symptom/reproduct/" class="reproduct">생식기관</a>
+    </div>
+
+</body>
+</html>

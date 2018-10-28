@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 예를 눌렀을 때
+            $('.input_signup').click(function(){
+
+                var inputid = $('.inputid').val();
+                var inputpassword = $('.inputpassword').val();
+                var inputemail = $('.inputemail').val();
+                var inputsex = $('.inputsex').val();
+                var inputage = $('.inputage').val();
+
+                $.ajax({ // .like 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
+                type: "POST", // 데이터를 전송하는 방법을 지정
+                url: "http://127.0.0.1:8000/register_new/", // 통신할 url을 지정
+                data: {'signup_id':inputid,
+                        'signup_password':inputpassword,
+                        'signup_email':inputemail,
+                        'signup_sex':inputsex,
+                        'signup_age':inputage,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터 전송시 옵션
+                dataType: "json",
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <h1>회원가입 화면입니다</h1>
+
+    <div>
+        아이디: <input type="textarea" class="inputid"> 
+    </div>
+
+    <div>
+        패스워드: <input type="textarea" class="inputpassword"> 
+    </div>
+
+    <div>
+        이메일: <input type="textarea" class="inputemail"> 
+    </div>
+
+    <div>
+        성별: <input type="textarea" class="inputsex"> 
+    </div>
+
+    <div>
+        나이: <input type="textarea" class="inputage"> 
+    </div>
+
+    <div>
+        <a href="http://127.0.0.1:8000/show_main/">
+            <input type="button" class="input_signup" value="가입하기">
+        </a>
+    </div>
+
+</body>
+</html>
